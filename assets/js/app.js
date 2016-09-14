@@ -17,7 +17,7 @@ function iconFactory(obj) {
   // create the icon's style
 	var iconStyle = new ol.style.Style({
 	  image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
-	    src: 'icon.svg',
+	    src: 'assets/images/icon.svg',
       opacity: 0.8,
       scale: 0.1
 	  }))
@@ -89,7 +89,7 @@ map.on('click', function(evt) {
     $(popupElem).attr('data-container', 'body');
     $(popupElem).attr('data-original-title', feature.get('title'));
     $(popupElem).attr('data-content', '<pre>' +
-      '<img src="' + feature.get('imgSrc') + '">' +
+      '<img src="assets/images/' + feature.get('imgSrc') + '">' +
       '<h5>' + feature.get('name') + '</h5>' + '</pre>');
     $(popupElem).attr('data-html', true);
     $(popupElem).popover();
