@@ -1,8 +1,6 @@
 # Installation process for Geoserver 2.9.0 on an Amazon Web Services EC2 instance using Tomcat
 
-## In progress
-
-### This may save someone a lot of Googling one day.
+### Sources: lots of Googling.
 
 After starting up a new AWS EC2 instance and obtaining a key pair, log into the instance using ssh and install some dependencies:
 ```
