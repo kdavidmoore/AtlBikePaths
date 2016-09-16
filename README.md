@@ -13,4 +13,4 @@ Displaying bike path conditions around Atlanta.
 * Make bike path tile clickable - show info on each segment
 
 ## Notes
-Requires a Geoserver instance on the backend that serves the 'bikepaths' tile. See `geoserver_instructions.md` for instructions on setting up Geoserver.
+Requires a [Geoserver](http://geoserver.org/) instance on the backend that serves the 'bikepaths' tile. See `geoserver_instructions.md` for instructions on setting up Geoserver.
