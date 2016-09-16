@@ -1,5 +1,3 @@
-var iconFeatures = [];
-
 function iconFactory(obj) {
   // create the icon
   var iconFeature = new ol.Feature({
@@ -24,10 +22,12 @@ function iconFactory(obj) {
   iconFeatures.push(iconFeature);
 }
 
-// add the icons
+var iconFeatures = [];
+// add the icons to the iconFeatures array
 bikeData.map(iconFactory);
 
-// add the icon as a new vector source
+// add the icon as a new vector source,
+// using the iconFeatures array
 var vectorSource = new ol.source.Vector({
   features: iconFeatures
 });
