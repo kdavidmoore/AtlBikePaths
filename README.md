@@ -6,7 +6,7 @@ Displaying bike path conditions around Atlanta.
 * Bootstrap 3
 * jQuery
 * OpenLayers, with OpenStreetMap for the background tile
-* [Exifread](https://pypi.python.org/pypi/ExifRead)
+* [ExifRead](https://pypi.python.org/pypi/ExifRead)
 
 ## TODO
 * Allow new images to be added, extract exif data from the images, and add images to the map (via admin panel)
@@ -18,6 +18,5 @@ This app requires a [Geoserver](http://geoserver.org/) instance on the backend t
 Once you have Geoserver set up, place the URL to your Geoserver's [Web Map Service (WMS)](http://docs.geoserver.org/stable/en/user/services/wms/reference.html) in `assets/js/WMS_URL`:
 
 ```javascript
-WMS_URL = "http://www.mydomain.com:3030/geoserver/wms";
+WMS_URL = "http://www.mydomain.com:8080/geoserver/wms";
 ```
-
