@@ -13,10 +13,10 @@ $(document).ready(function(){
         return feature;
     });
 
-    /* var layer = map.forEachLayerAtPixel(evt.pixel,
+     var layer = map.forEachLayerAtPixel(evt.pixel,
       function(feature, layer) {
         return layer;
-    }); */
+    }); 
 
     if(feature) {
       $('#modal1').openModal();
@@ -27,7 +27,7 @@ $(document).ready(function(){
         feature.get('imgSrc') + '">';
       $('.modal-img-wrapper').html(bikeImg);
       $('.modal-img').height(modalHeight * .5);
-    }  /* else if(layer) {
+    } else if(layer) {
       // get attribute data from bike paths layer;
       // this throws a cross origin error
       var resolution = map.getView().getResolution();
@@ -37,7 +37,7 @@ $(document).ready(function(){
       $('#modal1').openModal();
       $('.modal-content').html('<iframe seamless src="' +
         featureInfoUrl + '"></iframe>');
-    } */ else {
+    } else {
       $('#modal1').closeModal();
     }
   });
