@@ -38,11 +38,11 @@ $(document).ready(function(){
       '&WIDTH=970&HEIGHT=485&X=486&Y=165&BBOX=-180,-90,180,90' +
       '&LAYERS=Bikes:bikepaths' +
       '&QUERY_LAYERS=Bikes:bikepaths';
-    console.log(featureInfoUrl);
+    $('#info').html('<iframe seamless src="' + featureInfoUrl + '"></iframe>');
 
-    var bikeFeatures = new ol.format.WMSGetFeatureInfo().
-    readFeatures(featureInfoUrl);
-    console.log(bikeFeatures);
+    // var bikeFeatures = new ol.format.WMSGetFeatureInfo().
+    // readFeatures(featureInfoUrl);
+    // console.log(bikeFeatures);
 
     if(feature) {
       $('#modal1').openModal();
