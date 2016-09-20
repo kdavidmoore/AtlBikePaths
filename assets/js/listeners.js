@@ -30,7 +30,7 @@ $(document).ready(function(){
     }).readFeatures(response);
     $('#info').text(hotelFeatures.length.toString());*/
 
-    var featureRequestUrl = WMS_URL +
+    var featureInfoUrl = WMS_URL +
       '&INFO_FORMAT=application/json' +
       '&REQUEST=GetFeatureInfo' +
       '&SERVICE=WMS' +
