@@ -2,6 +2,9 @@
 
 Displaying bike path conditions around Atlanta.
 
+## Acknowledgements
+Clarence Blalock provided the original idea for this project, and also provided the bike paths shapefile (not included in the repo). All web development was done by Keith Moore.
+
 ## Built with
 * Bootstrap 3
 * jQuery

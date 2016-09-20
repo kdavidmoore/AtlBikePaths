@@ -19,12 +19,12 @@ function iconFactory(obj) {
 
   // set the icon's style
   iconFeature.setStyle(iconStyle);
-  iconFeatures.push(iconFeature);
+  return iconFeature;
 }
 
-var iconFeatures = [];
-// add the icons to the iconFeatures array
-bikeData.map(iconFactory);
+// create an iconFeatures array that contains an icon for each
+// element in the bikeData array
+var iconFeatures = bikeData.map(iconFactory);
 
 // add the icon as a new vector source,
 // using the iconFeatures array
@@ -44,24 +44,24 @@ var osmTile = new ol.layer.Tile({
 
 // create the style for the bikepaths layer
 // this doesn't do anything
-var pathStyle = [new ol.style.Style({
-  fill: new ol.style.Fill({
-    color: 'red'
-  }),
-  stroke: new ol.style.Stroke({
-    color: 'red',
-    width: 10
-  })
-})];
+// var pathStyle = [new ol.style.Style({
+//   fill: new ol.style.Fill({
+//     color: 'red'
+//   }),
+//   stroke: new ol.style.Stroke({
+//     color: 'red',
+//     width: 10
+//   })
+// })];
 
 // create a TileWMS source from geoserver
 var wmsSource = new ol.source.TileWMS({
   url: WMS_URL,
   params: {
-    'LAYERS': 'Bikes:bikepaths',
-    'FORMAT': 'image/png',
+    layers: 'Bikes:bikepaths',
+    format: 'image/png',
     transparent: true,
-    styles: pathStyle
+    styles: 'line'
   }
 });
 
@@ -91,10 +91,10 @@ map.on('click', function(evt) {
       return feature;
   });
 
-  // get attribute data from bike paths layer
-  var resolution = map.getView().getResolution();
-  var featureInfoUrl = wmsSource.getGetFeatureInfoUrl(evt.coordinate, resolution,
-    'EPSG:3857', {'INFO_FORMAT': 'text/html'});
+  /* var layer = map.forEachLayerAtPixel(evt.pixel,
+    function(feature, layer) {
+      return layer;
+  }); */
 
   if(feature) {
     $('#modal1').openModal();
@@ -105,11 +105,16 @@ map.on('click', function(evt) {
       feature.get('imgSrc') + '">';
     $('.modal-img-wrapper').html(bikeImg);
     $('.modal-img').height(modalHeight * .5);
-  } else if(featureInfoUrl) {
+  }  /* else if(layer) {
+    // get attribute data from bike paths layer
+    var resolution = map.getView().getResolution();
+    var featureInfoUrl = wmsSource.getGetFeatureInfoUrl(evt.coordinate, resolution,
+    'EPSG:3857', {'INFO_FORMAT': 'text/html'});
+    
     $('#modal1').openModal();
     $('.modal-content').html('<iframe seamless src="' +
       featureInfoUrl + '"></iframe>');
-  } else {
+  } */ else {
     $('#modal1').closeModal();
   }
 });
