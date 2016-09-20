@@ -102,22 +102,15 @@ map.on('click', function(evt) {
 
   if(feature) {
     $('#modal1').openModal();
-    // assuming the feature is a marker
-    // var geometry = feature.getGeometry();
-    // var coord = geometry.getCoordinates();
-    // popup.setPosition(coord);
-    // $(popupElem).attr('data-placement', 'right');
-    // $(popupElem).attr('data-container', 'body');
-    // $(popupElem).attr('data-original-title', feature.get('title'));
-    // $(popupElem).attr('data-content', '<pre>' +
-    //   '<img src="assets/images/' + feature.get('imgSrc') + '">' +
-    //   '<h5>' + feature.get('name') + '</h5>' + '</pre>');
-    // $(popupElem).attr('data-html', true);
-    // $(popupElem).popover();
-    // $(popupElem).popover('show');
+    var modalHeight = $('#modal1').height();
+    $('.modal-header').html(feature.get('name'));
+    $('.modal-description').html('County: ' + feature.get('county'));
+    var bikeImg = '<img class="modal-img" src="assets/images/' +
+      feature.get('imgSrc') + '">';
+    $('.modal-img-wrapper').html(bikeImg);
+    $('.modal-img').height(modalHeight * .5);
   } else {
     $('#modal1').closeModal();
-    // $(popupElem).popover('destroy');
   }
 });
 

@@ -1,23 +1,4 @@
-* {
-  font-style: sans-serif;
-}
-
-h2 {
-	text-align: center;
-}
-img {
-  max-width: 100%;
-}
 .map {
   height: 80vh;
   width: 100%;
-  overflow: visible;
-}
-.popover {
-    z-index: 9999;
-}
-pre {
-  border: none;
-  background-color: #fff;
-  font-style: sans-serif;
 }

@@ -7,7 +7,7 @@ var bikeData = [
     lat: 33.780
   },
   {
-    name: 'Cobb Path',
+    name: 'DeKalb Path',
     county: 'DeKalb',
     imgSrc: 'path.jpg',
     lng: -84.300,
