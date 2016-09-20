@@ -42,3 +42,25 @@ sudo mv ~/geoserver.war /var/lib/tomcat7/webapps
 sudo service tomcat7 restart
 ```
 You should then be able to log into the Geoserver admin panel from a browser at `http://my.ip.address:8080/geoserver` using the default admin password.
+
+
+## Allow CORS
+
+Go to `/var/lib/tomcat7/webapps/geoserver/` and add the following code:
+
+```
+<filter>
+  <filter-name>CorsFilter</filter-name>
+  <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+  <init-param>
+    <param-name>cors.allowed.origins</param-name>
+    <param-value>*</param-value>
+  </init-param>
+</filter>
+<filter-mapping>
+  <filter-name>CorsFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+</filter-mapping>
+```
+
+Then run `sudo /etc/init.d/tomcat7 restart` from the terminal.
