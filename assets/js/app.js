@@ -42,64 +42,106 @@ var osmTile = new ol.layer.Tile({
   source: new ol.source.OSM()
 });
 
-// create the bike paths tile from geoserver
+// create the style for the bikepaths layer
+// this doesn't do anything
+var pathStyle = [new ol.style.Style({
+  fill: new ol.style.Fill({
+    color: 'red'
+  }),
+  stroke: new ol.style.Stroke({
+    color: 'red',
+    width: 10
+  })
+})];
+
+// create a TileWMS source from geoserver
+var wmsSource = new ol.source.TileWMS({
+  url: WMS_URL,
+  params: {
+    'LAYERS': 'Bikes:bikepaths',
+    'FORMAT': 'image/png',
+    transparent: true,
+    styles: pathStyle
+  }
+});
+
+// create the bike paths tile from the WMS source
 var wmsTile = new ol.layer.Tile({
   title: 'ATL Bike Paths',
-  source: new ol.source.TileWMS({
-    url: WMS_URL,
-    params: {
-      layers: 'Bikes:bikepaths',
-      format: 'image/png',
-      transparent: true,
-      styles: 'line'
-    }
-  })
+  source: wmsSource
+});
+
+var view = new ol.View({
+  center: ol.proj.fromLonLat([-84.398, 33.772]),
+  zoom: 11
 });
 
 // create the map
 var map = new ol.Map({
   target: 'map',
   layers: [osmTile, wmsTile, icons],
-  view: new ol.View({
-    center: ol.proj.fromLonLat([-84.398, 33.772]),
-    zoom: 11
-  })
+  view: view
 });
 
 // create a popup
-var popupElem = document.getElementById('popup');
+// var popupElem = document.getElementById('popup');
 
-var popup = new ol.Overlay({
-  element: popupElem,
-  positioning: 'bottom-center',
-  stopEvent: false
-});
-map.addOverlay(popup);
+// var popup = new ol.Overlay({
+//   element: popupElem,
+//   positioning: 'bottom-center',
+//   stopEvent: false
+// });
+// map.addOverlay(popup);
 
 // add event listener to display popup on click
 map.on('click', function(evt) {
   var feature = map.forEachFeatureAtPixel(evt.pixel,
     function(feature, layer) {
       return feature;
-    });
-  
+  });
+
   if(feature) {
-    var geometry = feature.getGeometry();
-    var coord = geometry.getCoordinates();
-    popup.setPosition(coord);
-    $(popupElem).attr('data-placement', 'right');
-    $(popupElem).attr('data-container', 'body');
-    $(popupElem).attr('data-original-title', feature.get('title'));
-    $(popupElem).attr('data-content', '<pre>' +
-      '<img src="assets/images/' + feature.get('imgSrc') + '">' +
-      '<h5>' + feature.get('name') + '</h5>' + '</pre>');
-    $(popupElem).attr('data-html', true);
-    $(popupElem).popover();
-    $(popupElem).popover('show');
+    $('#modal1').openModal();
+    // assuming the feature is a marker
+    // var geometry = feature.getGeometry();
+    // var coord = geometry.getCoordinates();
+    // popup.setPosition(coord);
+    // $(popupElem).attr('data-placement', 'right');
+    // $(popupElem).attr('data-container', 'body');
+    // $(popupElem).attr('data-original-title', feature.get('title'));
+    // $(popupElem).attr('data-content', '<pre>' +
+    //   '<img src="assets/images/' + feature.get('imgSrc') + '">' +
+    //   '<h5>' + feature.get('name') + '</h5>' + '</pre>');
+    // $(popupElem).attr('data-html', true);
+    // $(popupElem).popover();
+    // $(popupElem).popover('show');
   } else {
-    $(popupElem).popover('destroy');
+    $('#modal1').closeModal();
+    // $(popupElem).popover('destroy');
   }
 });
+
+// get attribute data from bike paths layer
+// map.on('singleclick', function(evt) {
+//   document.getElementById('info').innerHTML = '';
+//   var resolution = map.getView().getResolution();
+//   var url = wmsTile.getSource().getGetFeatureInfoUrl(evt.coordinate, resolution,
+//     'EPSG:3857', {'INFO_FORMAT': 'text/html'});
+
+//   if (url) {
+//     popup.setPosition(evt.coordinate);
+//     $(popupElem).attr('data-placement', 'right');
+//     $(popupElem).attr('data-container', 'body');
+//     $(popupElem).attr('data-original-title', 'A Title');
+//     $(popupElem).attr('data-content', '<pre>' +
+//       '<iframe seamless src="' + url + '"></iframe>' + '</pre>');
+//     $(popupElem).attr('data-html', true);
+//     $(popupElem).popover();
+//     $(popupElem).popover('show');
+//   } else {
+//     $(popupElem).popover('destroy');
+//   }
+// });
 
 // change mouse cursor when over marker
 $(map.getViewport()).on('mousemove', function(e) {
