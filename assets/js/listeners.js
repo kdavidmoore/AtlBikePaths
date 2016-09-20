@@ -18,6 +18,32 @@ $(document).ready(function(){
     //     return layer;
     // });
 
+    // get attribute data from bike paths layer
+    /*var resolution = map.getView().getResolution();
+    var featureInfoUrl = wmsSource.getGetFeatureInfoUrl(evt.coordinate, resolution,
+    'EPSG:3857', {'INFO_FORMAT': 'text/html'});
+    $('#info').html('<iframe seamless src="' + featureInfoUrl + '"></iframe>');
+    */
+
+    /*var bikeFeatures = new ol.format.WMSGetFeatureInfo({
+      layers: ['Bikes:bikepaths']
+    }).readFeatures(response);
+    $('#info').text(hotelFeatures.length.toString());*/
+
+    var featureRequestUrl = WMS_URL +
+      '&INFO_FORMAT=application/json' +
+      '&REQUEST=GetFeatureInfo' +
+      '&SERVICE=WMS' +
+      '&VERSION=1.0.0' +
+      '&WIDTH=970&HEIGHT=485&X=486&Y=165&BBOX=-180,-90,180,90' +
+      '&LAYERS=Bikes:bikepaths' +
+      '&QUERY_LAYERS=Bikes:bikepaths';
+    console.log(featureInfoUrl);
+
+    var bikeFeatures = new ol.format.WMSGetFeatureInfo().
+    readFeatures(featureInfoUrl);
+    console.log(bikeFeatures);
+
     if(feature) {
       $('#modal1').openModal();
       var modalHeight = $('#modal1').height();
@@ -27,17 +53,7 @@ $(document).ready(function(){
         feature.get('imgSrc') + '">';
       $('.modal-img-wrapper').html(bikeImg);
       $('.modal-img').height(modalHeight * 0.5);
-    /* }
-    else if(layer) */
-
-      // get attribute data from bike paths layer;
-      // this throws a cross origin error
-      var resolution = map.getView().getResolution();
-      var featureInfoUrl = wmsSource.getGetFeatureInfoUrl(evt.coordinate, resolution,
-      'EPSG:3857', {'INFO_FORMAT': 'text/html'});
-      $('#info').html('<iframe seamless src="' + featureInfoUrl + '"></iframe>');
-    }
-    else {
+    } else {
       $('#modal1').closeModal();
     }
   });
