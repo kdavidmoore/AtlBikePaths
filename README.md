@@ -6,8 +6,15 @@ Displaying bike path conditions around Atlanta.
 Clarence Blalock provided the original idea for this project, and also provided the bike paths shapefile (not included in the repo). All web development was done by Keith Moore.
 
 ## Directory Structure
-`/assets` - main app lives here
-`/exifreader` - standalone Python script lives here
+```javascript
+/assets
+    /css  // stylesheets go here
+    /fonts  // fonts for materialize css go here
+    /images  // vector graphics and such go here
+    /js  // main javascript code goes here
+/exifreader  // standalone Python script go here
+    /images  // bike path images go here
+```
 
 ## Built with
 * [Materialize CSS](http://materializecss.com/) (for modals and general styling)

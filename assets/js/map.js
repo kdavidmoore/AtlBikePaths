@@ -19,7 +19,6 @@ function iconFactory(obj) {
 
   // set the icon's style
   iconFeature.setStyle(iconStyle);
-  console.log(iconFeature);
   return iconFeature;
 }
 
