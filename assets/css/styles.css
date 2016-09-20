@@ -12,6 +12,13 @@
   padding: 10px 20px;
 }
 
+.info {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  max-width: 50%;
+}
+
 @media only screen
 and (max-device-width: 680px) {
   h1, h2, h3, h4, h5, h6 {
