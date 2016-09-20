@@ -46,11 +46,11 @@ var osmTile = new ol.layer.Tile({
 var wmsSource = new ol.source.TileWMS({
   url: WMS_URL,
   params: {
-    layers: 'Bikes:bikepaths',
-    format: 'image/png',
-    transparent: true,
-    styles: 'line'
-  }
+    'LAYERS': 'Bikes:bikepaths',
+    'FORMAT': 'image/png',
+    'STYLES': 'line'
+  },
+  crossOrigin: null
 });
 
 // create the bike paths tile from the WMS source
