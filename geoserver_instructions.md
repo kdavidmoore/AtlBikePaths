@@ -52,10 +52,6 @@ Go to `/var/lib/tomcat7/webapps/geoserver/` and add the following code:
 <filter>
   <filter-name>CorsFilter</filter-name>
   <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
-  <init-param>
-    <param-name>cors.allowed.origins</param-name>
-    <param-value>*</param-value>
-  </init-param>
 </filter>
 <filter-mapping>
   <filter-name>CorsFilter</filter-name>

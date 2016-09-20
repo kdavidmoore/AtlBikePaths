@@ -50,7 +50,7 @@ var wmsSource = new ol.source.TileWMS({
     'FORMAT': 'image/png',
     'STYLES': 'line'
   },
-  crossOrigin: null
+  crossOrigin: 'Anonymous'
 });
 
 // create the bike paths tile from the WMS source
