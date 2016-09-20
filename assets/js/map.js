@@ -19,6 +19,7 @@ function iconFactory(obj) {
 
   // set the icon's style
   iconFeature.setStyle(iconStyle);
+  console.log(iconFeature);
   return iconFeature;
 }
 
@@ -61,7 +62,7 @@ var wmsTile = new ol.layer.Tile({
 
 var view = new ol.View({
   center: ol.proj.fromLonLat([-84.398, 33.772]),
-  zoom: 11
+  zoom: 10
 });
 
 // create the map
