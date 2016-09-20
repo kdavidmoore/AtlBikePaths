@@ -5,11 +5,15 @@ Displaying bike path conditions around Atlanta.
 ## Acknowledgements
 Clarence Blalock provided the original idea for this project, and also provided the bike paths shapefile (not included in the repo). All web development was done by Keith Moore.
 
+## Directory Structure
+`/assets` - main app lives here
+`/exifreader` - standalone Python script lives here
+
 ## Built with
-* Bootstrap 3
+* [Materialize CSS](http://materializecss.com/) (for modals and general styling)
 * jQuery
 * OpenLayers, with OpenStreetMap for the background tile
-* [ExifRead](https://pypi.python.org/pypi/ExifRead)
+* [ExifRead](https://pypi.python.org/pypi/ExifRead) (used in separate Python script)
 
 ## Installation
 This app requires a [Geoserver](http://geoserver.org/) instance on the backend that serves the 'bikepaths' tile. See `geoserver_instructions.md` for instructions on setting up Geoserver.
