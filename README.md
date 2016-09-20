@@ -17,7 +17,7 @@ This app requires a [Geoserver](http://geoserver.org/) instance on the backend t
 Once you have Geoserver set up, place the URL to your Geoserver's [Web Map Service (WMS)](http://docs.geoserver.org/stable/en/user/services/wms/reference.html) in `assets/js/WMS_URL`:
 
 ```javascript
-WMS_URL = "http://www.mydomain.com:8080/geoserver/wms";
+var WMS_URL = "http://www.mydomain.com:8080/geoserver/wms";
 ```
 
 ## To Do
