@@ -83,22 +83,18 @@ var map = new ol.Map({
   view: view
 });
 
-// create a popup
-// var popupElem = document.getElementById('popup');
-
-// var popup = new ol.Overlay({
-//   element: popupElem,
-//   positioning: 'bottom-center',
-//   stopEvent: false
-// });
-// map.addOverlay(popup);
-
 // add event listener to display popup on click
 map.on('click', function(evt) {
+  // get the feature (marker) that was clicked on
   var feature = map.forEachFeatureAtPixel(evt.pixel,
     function(feature, layer) {
       return feature;
   });
+
+  // get attribute data from bike paths layer
+  var resolution = map.getView().getResolution();
+  var featureInfoUrl = wmsSource.getGetFeatureInfoUrl(evt.coordinate, resolution,
+    'EPSG:3857', {'INFO_FORMAT': 'text/html'});
 
   if(feature) {
     $('#modal1').openModal();
@@ -109,32 +105,14 @@ map.on('click', function(evt) {
       feature.get('imgSrc') + '">';
     $('.modal-img-wrapper').html(bikeImg);
     $('.modal-img').height(modalHeight * .5);
+  } else if(featureInfoUrl) {
+    $('#modal1').openModal();
+    $('.modal-content').html('<iframe seamless src="' +
+      featureInfoUrl + '"></iframe>');
   } else {
     $('#modal1').closeModal();
   }
 });
-
-// get attribute data from bike paths layer
-// map.on('singleclick', function(evt) {
-//   document.getElementById('info').innerHTML = '';
-//   var resolution = map.getView().getResolution();
-//   var url = wmsTile.getSource().getGetFeatureInfoUrl(evt.coordinate, resolution,
-//     'EPSG:3857', {'INFO_FORMAT': 'text/html'});
-
-//   if (url) {
-//     popup.setPosition(evt.coordinate);
-//     $(popupElem).attr('data-placement', 'right');
-//     $(popupElem).attr('data-container', 'body');
-//     $(popupElem).attr('data-original-title', 'A Title');
-//     $(popupElem).attr('data-content', '<pre>' +
-//       '<iframe seamless src="' + url + '"></iframe>' + '</pre>');
-//     $(popupElem).attr('data-html', true);
-//     $(popupElem).popover();
-//     $(popupElem).popover('show');
-//   } else {
-//     $(popupElem).popover('destroy');
-//   }
-// });
 
 // change mouse cursor when over marker
 $(map.getViewport()).on('mousemove', function(e) {
