@@ -19,6 +19,7 @@ $(document).ready(function(){
     'EPSG:3857', {'INFO_FORMAT': 'application/json'});
     //$('#info').html('<iframe seamless src="' + featureInfoUrl + '"></iframe>');
     $.get(featureInfoUrl, function(response) {
+      console.log(response);
       var county = response.features[0].properties.ogr_regi_1;
       var surfType = response.features[0].properties.ogr_surf_s;
       var facType = response.features[0].properties.ogr_factyp;
