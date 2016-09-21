@@ -22,6 +22,7 @@ Clarence Blalock provided the original idea for this project, and also provided 
 /exifreader  /* standalone Python script goes here */
     /images  /* bike path images go here */
 /shpreader  /* another standalone Python script goes here */
+/SLD  /* contains the SLD used to style the bike paths layer (and also the default 'line' SLD) */
 ```
 
 ## Installation
