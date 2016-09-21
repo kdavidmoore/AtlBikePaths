@@ -18,20 +18,29 @@ $(document).ready(function(){
     var featureInfoUrl = wmsSource.getGetFeatureInfoUrl(evt.coordinate, resolution,
     'EPSG:3857', {'INFO_FORMAT': 'application/json'});
     $.get(featureInfoUrl, function(response) {
-      console.log(response);
-      //var surfType = response.features[0].properties.ogr_surf_s || '';
-      //var featM = response.features[0].properties.ogr_feat_m || '';
-      //var offRoad = response.features[0].properties.ogr_on_off || '';
-      var facType = response.features[0].properties.ogr_factyp ||
-        response.features[0].ogr_fact_1;
-      var pathLoc = response.features[0].properties.ogr_region ||
-        response.features[0].properties.ogr_regi_1;
+
+      if(response.features[0]) {
+        var surfType = response.features[0].properties.ogr_surf_s || '';
+        //var featM = response.features[0].properties.ogr_feat_m || '';
+        //var offRoad = response.features[0].properties.ogr_on_off || '';
+        var facType = response.features[0].properties.ogr_factyp ||
+          response.features[0].ogr_fact_1;
+        var pathLoc = response.features[0].properties.ogr_region ||
+          response.features[0].properties.ogr_regi_1;
+      } else {
+        var surfType = '';
+        var featM = '';
+        var offRoad = '';
+        var facType = feature.get(name);
+        var pathLoc = feature.get(county);
+      }
       
       if(feature) {
         $('#modal1').openModal();
         var modalHeight = $('#modal1').height();
         $('.modal-header').text(facType);
-        $('.modal-description').text('Location: ' + pathLoc);
+        $('.modal-description').html('<p>Location: ' + pathLoc + '</p>' +
+          '<p>Surface type: ' + surfType + '</p>');
         var bikeImg = '<img class="modal-img" src="exifreader/images/' +
           feature.get('imgSrc') + '">';
         $('.modal-img-wrapper').html(bikeImg);
