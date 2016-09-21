@@ -35,5 +35,7 @@ var WMS_URL = "http://www.mydomain.com:8080/geoserver/wms";
 ```
 
 ## To Do
-* Allow new images to be added, extract exif data from the images, and add images to the map (via admin panel)
-* Make bike path tile clickable - show info on each segment
+* Get attribute-based style rules working on Geoserver
+* Automate the process of extracting exif data from path photos
+* Automate the process of extracting attribute data from shapefiles
+* Create an admin panel where new path photos and shapefiles can be added
