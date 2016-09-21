@@ -17,22 +17,21 @@ $(document).ready(function(){
     var resolution = map.getView().getResolution();
     var featureInfoUrl = wmsSource.getGetFeatureInfoUrl(evt.coordinate, resolution,
     'EPSG:3857', {'INFO_FORMAT': 'application/json'});
-    //$('#info').html('<iframe seamless src="' + featureInfoUrl + '"></iframe>');
     $.get(featureInfoUrl, function(response) {
       console.log(response);
-      var county = response.features[0].properties.ogr_regi_1;
-      var surfType = response.features[0].properties.ogr_surf_s;
-      var facType = response.features[0].properties.ogr_factyp;
-      var facInfo = response.features[0].ogr_fact_1;
-      $('#info').html('<p>Surface type: ' + surfType + '</p>' +
-        '<p>Facility type: ' + facType + '</p>' +
-        '<p>Facility info: ' + facInfo + '</p>');
-
+      //var surfType = response.features[0].properties.ogr_surf_s || '';
+      //var featM = response.features[0].properties.ogr_feat_m || '';
+      //var offRoad = response.features[0].properties.ogr_on_off || '';
+      var facType = response.features[0].properties.ogr_factyp ||
+        response.features[0].ogr_fact_1;
+      var pathLoc = response.features[0].properties.ogr_region ||
+        response.features[0].properties.ogr_regi_1;
+      
       if(feature) {
         $('#modal1').openModal();
         var modalHeight = $('#modal1').height();
-        $('.modal-header').html(feature.get('name'));
-        $('.modal-description').html('County: ' + county);
+        $('.modal-header').text(facType);
+        $('.modal-description').text('Location: ' + pathLoc);
         var bikeImg = '<img class="modal-img" src="exifreader/images/' +
           feature.get('imgSrc') + '">';
         $('.modal-img-wrapper').html(bikeImg);
