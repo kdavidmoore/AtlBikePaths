@@ -19,6 +19,9 @@ $(document).ready(function(){
     $.get(featureInfoUrl, function(response) {
 
       if(response.features[0]) {
+        if (response.features[0].ogr_fact_1) {
+          console.log(response.features[0].ogr_fact_1);
+        }
         var surfType = response.features[0].properties.ogr_surf_s || 'unknown';
         var featM = response.features[0].properties.ogr_feat_m || 'unknown';
         var offRoad = response.features[0].properties.ogr_on_off || 'unknown';
