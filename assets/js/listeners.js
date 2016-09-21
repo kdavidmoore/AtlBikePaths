@@ -13,37 +13,33 @@ $(document).ready(function(){
         return feature;
     });
 
-    // var layer = map.forEachLayerAtPixel(evt.pixel,
-    //   function(feature, layer) {
-    //     return layer;
-    // });
-
     // get attribute data from bike paths layer
     var resolution = map.getView().getResolution();
     var featureInfoUrl = wmsSource.getGetFeatureInfoUrl(evt.coordinate, resolution,
-    'EPSG:3857', {'INFO_FORMAT': 'text/html'});
-    console.log('feature info url:');
-    console.log(featureInfoUrl);
-    $('#info').html('<iframe seamless src="' + featureInfoUrl + '"></iframe>');
+    'EPSG:3857', {'INFO_FORMAT': 'application/json'});
+    //$('#info').html('<iframe seamless src="' + featureInfoUrl + '"></iframe>');
+    $.get(featureInfoUrl, function(response) {
+      var county = response.features[0].properties.ogr_regi_1;
+      var surfType = response.features[0].properties.ogr_surf_s;
+      var facType = response.features[0].properties.ogr_factyp;
+      var facInfo = response.features[0].ogr_fact_1;
+      $('#info').html('<p>Surface type: ' + surfType + '</p>' +
+        '<p>Facility type: ' + facType + '</p>' +
+        '<p>Facility info: ' + facInfo + '</p>');
 
-    var bikeFeatures = new ol.format.WMSGetFeatureInfo({
-      layers: ['Bikes:bikepaths']
-    }).readFeatures(featureInfoUrl);
-    console.log('bike features:');
-    console.log(bikeFeatures);
-
-    if(feature) {
-      $('#modal1').openModal();
-      var modalHeight = $('#modal1').height();
-      $('.modal-header').html(feature.get('name'));
-      $('.modal-description').html('County: ' + feature.get('county'));
-      var bikeImg = '<img class="modal-img" src="exifreader/images/' +
-        feature.get('imgSrc') + '">';
-      $('.modal-img-wrapper').html(bikeImg);
-      $('.modal-img').height(modalHeight * 0.5);
-    } else {
-      $('#modal1').closeModal();
-    }
+      if(feature) {
+        $('#modal1').openModal();
+        var modalHeight = $('#modal1').height();
+        $('.modal-header').html(feature.get('name'));
+        $('.modal-description').html('County: ' + county);
+        var bikeImg = '<img class="modal-img" src="exifreader/images/' +
+          feature.get('imgSrc') + '">';
+        $('.modal-img-wrapper').html(bikeImg);
+        $('.modal-img').height(modalHeight * 0.5);
+      } else {
+        $('#modal1').closeModal();
+      }
+    });
   });
 
   // change mouse cursor when over marker
