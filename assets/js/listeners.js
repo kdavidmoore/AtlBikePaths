@@ -20,13 +20,13 @@ $(document).ready(function(){
     $.get(featureInfoUrl, function(response) {
 
       if(response.features[0]) {
-        var surfType = response.features[0].properties.ogr_surf_s || '';
-        var featM = response.features[0].properties.ogr_feat_m || '';
-        var offRoad = response.features[0].properties.ogr_on_off || '';
-        var facType = response.features[0].properties.ogr_factyp ||
-          response.features[0].ogr_fact_1;
-        var pathLoc = response.features[0].properties.ogr_region ||
-          response.features[0].properties.ogr_regi_1;
+        var surfType = String(response.features[0].properties.ogr_surf_s) || '';
+        var featM = String(response.features[0].properties.ogr_feat_m) || '';
+        var offRoad = String(response.features[0].properties.ogr_on_off) || '';
+        var facType = String(response.features[0].properties.ogr_factyp) ||
+          String(response.features[0].ogr_fact_1);
+        var pathLoc = String(response.features[0].properties.ogr_region) ||
+          String(response.features[0].properties.ogr_regi_1);
       } else {
         var surfType = 'unknown';
         var featM = 'unknown';
