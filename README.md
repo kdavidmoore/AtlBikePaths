@@ -10,6 +10,7 @@ Clarence Blalock provided the original idea for this project, and also provided 
 * [OpenLayers 3](http://openlayers.org/)
 * jQuery
 * [ExifRead](https://pypi.python.org/pypi/ExifRead) (used in standalone Python script)
+* [PyShp](https://pypi.python.org/pypi/pyshp) (used in another standalone Python script)
 
 ## Directory Structure
 ```javascript
@@ -18,8 +19,9 @@ Clarence Blalock provided the original idea for this project, and also provided 
     /fonts  /* fonts for materialize css go here */
     /images  /* vector graphics and such go here */
     /js  /* main javascript code goes here */
-/exifreader  /* standalone Python script go here */
+/exifreader  /* standalone Python script goes here */
     /images  /* bike path images go here */
+/shpreader  /* another standalone Python script goes here */
 ```
 
 ## Installation

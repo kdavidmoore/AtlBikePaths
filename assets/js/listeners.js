@@ -1,8 +1,7 @@
 $(document).ready(function(){
   // add the legend
-  var legendHtml = '<p><img src="' + WMS_URL +
-    '?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=Bikes:bikepaths&STYLE=line">' +
-    ' Bike paths</p>';
+  var legendHtml = '<img src="' + WMS_URL +
+    '?REQUEST=GetLegendGraphic&VERSION=1.1.1&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=Bikes:bikepaths&STYLE=line">';
   $('#legend').html(legendHtml);
 
   // add event listener to display popup on click
@@ -15,8 +14,8 @@ $(document).ready(function(){
 
     // get attribute data from bike paths layer
     var resolution = map.getView().getResolution();
-    var featureInfoUrl = wmsSource.getGetFeatureInfoUrl(event.coordinate, resolution,
-    'EPSG:3857', {'INFO_FORMAT': 'application/json'});
+    var featureInfoUrl = wmsSource.getGetFeatureInfoUrl(event.coordinate,
+      resolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'});
     $.get(featureInfoUrl, function(response) {
 
       if(response.features[0]) {
