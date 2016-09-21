@@ -20,9 +20,9 @@ $(document).ready(function(){
     $.get(featureInfoUrl, function(response) {
 
       if(response.features[0]) {
-        var surfType = response.features[0].properties.ogr_surf_s || '';
-        var featM = response.features[0].properties.ogr_feat_m || '';
-        var offRoad = response.features[0].properties.ogr_on_off || '';
+        var surfType = response.features[0].properties.ogr_surf_s || 'unknown';
+        var featM = response.features[0].properties.ogr_feat_m || 'unknown';
+        var offRoad = response.features[0].properties.ogr_on_off || 'unknown';
         var facType = response.features[0].properties.ogr_factyp ||
           response.features[0].ogr_fact_1;
         var pathLoc = response.features[0].properties.ogr_region ||
