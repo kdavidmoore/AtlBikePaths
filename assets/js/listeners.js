@@ -31,8 +31,8 @@ $(document).ready(function(){
         var surfType = '';
         var featM = '';
         var offRoad = '';
-        var facType = feature.get(name);
-        var pathLoc = feature.get(county);
+        var facType = feature.get('name');
+        var pathLoc = feature.get('county');
       }
       
       if(feature) {
