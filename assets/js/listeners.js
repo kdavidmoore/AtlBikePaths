@@ -6,16 +6,16 @@ $(document).ready(function(){
   $('#legend').html(legendHtml);
 
   // add event listener to display popup on click
-  map.on('click', function(evt) {
+  map.on('click', function(event) {
     // get the feature (marker) that was clicked on
-    var feature = map.forEachFeatureAtPixel(evt.pixel,
+    var feature = map.forEachFeatureAtPixel(event.pixel,
       function(feature, layer) {
         return feature;
     });
 
     // get attribute data from bike paths layer
     var resolution = map.getView().getResolution();
-    var featureInfoUrl = wmsSource.getGetFeatureInfoUrl(evt.coordinate, resolution,
+    var featureInfoUrl = wmsSource.getGetFeatureInfoUrl(event.coordinate, resolution,
     'EPSG:3857', {'INFO_FORMAT': 'application/json'});
     $.get(featureInfoUrl, function(response) {
 
@@ -54,8 +54,8 @@ $(document).ready(function(){
   });
 
   // change mouse cursor when over marker
-  $(map.getViewport()).on('mousemove', function(e) {
-    var pixel = map.getEventPixel(e.originalEvent);
+  $(map.getViewport()).on('mousemove', function(event) {
+    var pixel = map.getEventPixel(event.originalEvent);
     var hit = map.forEachFeatureAtPixel(pixel, function(feature, layer) {
       return true;
     });

@@ -1,7 +1,7 @@
 # Installation process for Geoserver 2.9.0 on an Amazon Web Services EC2 instance using Tomcat
+References: I used the Google.
 
-### Sources: lots of Googling.
-
+## Getting Started
 After starting up a new AWS EC2 instance and obtaining a key pair, log into the instance using ssh and install some dependencies:
 ```
 sudo apt-get update
@@ -43,10 +43,8 @@ sudo service tomcat7 restart
 ```
 You should then be able to log into the Geoserver admin panel from a browser at `http://my.ip.address:8080/geoserver` using the default admin password.
 
-
-## Allow CORS
-
-Go to `/var/lib/tomcat7/webapps/geoserver/` and add the following code:
+## Allowing CORS
+Go to `/var/lib/tomcat7/webapps/geoserver/WEB-INF/web.xml` and add the following code:
 
 ```
 <filter>
@@ -59,4 +57,4 @@ Go to `/var/lib/tomcat7/webapps/geoserver/` and add the following code:
 </filter-mapping>
 ```
 
-Then run `sudo /etc/init.d/tomcat7 restart` from the terminal.
+Save that file and run `sudo /etc/init.d/tomcat7 restart`.
