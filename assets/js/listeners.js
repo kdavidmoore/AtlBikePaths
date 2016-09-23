@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
   // add the legend
   var legendHtml = '<img src="' + WMS_URL +
     '?REQUEST=GetLegendGraphic&VERSION=1.1.1&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=Bikes:bikepaths&STYLE=line">';
@@ -14,14 +14,12 @@ $(document).ready(function(){
 
     // get attribute data from bike paths layer
     var resolution = map.getView().getResolution();
-    var featureInfoUrl = wmsSource.getGetFeatureInfoUrl(event.coordinate,
+    var featureInfoUrl = wmsTile.getSource().
+      getGetFeatureInfoUrl(event.coordinate,
       resolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'});
     $.get(featureInfoUrl, function(response) {
 
       if(response.features[0]) {
-        if (response.features[0].ogr_fact_1) {
-          console.log(response.features[0].ogr_fact_1);
-        }
         var surfType = response.features[0].properties.ogr_surf_s || 'unknown';
         var featM = response.features[0].properties.ogr_feat_m || 'unknown';
         var offRoad = response.features[0].properties.ogr_on_off || 'unknown';
@@ -39,7 +37,6 @@ $(document).ready(function(){
       
       if(feature) {
         $('#modal1').openModal();
-        var modalHeight = $('#modal1').height();
         $('.modal-header').text(facType);
         var modalTable = '<td>' + pathLoc + '</td><td>' +
           surfType + '</td><td>' + offRoad + '</td><td>' +
@@ -48,6 +45,7 @@ $(document).ready(function(){
         var bikeImg = '<img class="modal-img" src="exifreader/images/' +
           feature.get('imgSrc') + '">';
         $('.modal-img-wrapper').html(bikeImg);
+        var modalHeight = $('#modal1').height();
         $('.modal-img').height(modalHeight * 0.5);
       } else {
         $('#modal1').closeModal();
@@ -62,10 +60,7 @@ $(document).ready(function(){
       return true;
     });
     
-    if(hit) {
-      map.getTargetElement().style.cursor = 'pointer';
-    } else {
+    hit ? map.getTargetElement().style.cursor = 'pointer' :
       map.getTargetElement().style.cursor = '';
-    }
   });
 });
