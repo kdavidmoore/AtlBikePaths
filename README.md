@@ -3,7 +3,7 @@
 Displaying bike path conditions around Atlanta.
 
 ## Acknowledgements
-Clarence Blalock provided the original idea for this project, and also provided the bike paths shapefile (not included in the repo). All web development was done by Keith Moore.
+Clarence Blalock provided the original idea for this project, and also provided the bike paths shapefile (not included in the repo).
 
 ## Built with
 * [Materialize CSS](http://materializecss.com/) (for modals and general styling)
@@ -36,6 +36,5 @@ var WMS_URL = "http://www.mydomain.com:8080/geoserver/wms";
 
 ## To Do
 * Get attribute-based style rules working on Geoserver
+* Create an admin panel where new path photos can be added
 * Automate the process of extracting exif data from path photos
-* Automate the process of extracting attribute data from shapefiles
-* Create an admin panel where new path photos and shapefiles can be added
