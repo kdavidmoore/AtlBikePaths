@@ -2,6 +2,10 @@
 
 Displaying bike path conditions around Atlanta.
 
+## Screenshot
+
+![GIF](http://i68.tinypic.com/2e55dnp.gif)
+
 ## Acknowledgements
 Clarence Blalock provided the original idea for this project, and also provided the bike paths shapefile (not included in the repo).
 
