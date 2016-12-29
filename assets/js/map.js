@@ -45,7 +45,7 @@ var wmsTile = new ol.layer.Tile({
     params: {
       'LAYERS': 'Bikes:bikepaths',
       'FORMAT': 'image/png',
-      'STYLES': 'line'
+      'STYLES': 'bike_lines'
     },
     crossOrigin: 'Anonymous'
   })
