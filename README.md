@@ -3,8 +3,9 @@
 Displaying bike path conditions around Atlanta.
 
 ## Screenshot
-
 ![GIF](http://i68.tinypic.com/2e55dnp.gif)
+
+## [Demo here](http://ec2-54-210-135-224.compute-1.amazonaws.com/)
 
 ## Acknowledgements
 Clarence Blalock provided the original idea for this project, and also provided the bike paths shapefile (not included in the repo).
@@ -39,6 +40,5 @@ var WMS_URL = "http://www.mydomain.com:8080/geoserver/wms";
 ```
 
 ## To Do
-* Get attribute-based style rules working on Geoserver
 * Create an admin panel where new path photos can be added
 * Automate the process of extracting exif data from path photos
