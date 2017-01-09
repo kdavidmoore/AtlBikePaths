@@ -11,9 +11,9 @@ function iconFactory(obj) {
   // set the icon's style using a new style object
   iconFeature.setStyle(new ol.style.Style({
     image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
-      src: 'assets/images/icon.svg',
+      src: 'assets/images/map-pin.svg',
       opacity: 0.8,
-      scale: 0.08
+      scale: 0.6
     }))
   }));
 
@@ -34,7 +34,7 @@ var icons = new ol.layer.Vector({
 // create the base tile from open street maps
 var osmTile = new ol.layer.Tile({
   source: new ol.source.Stamen({
-    layer: 'toner'
+    layer: 'terrain'
   })
 });
 
