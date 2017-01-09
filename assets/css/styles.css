@@ -1,9 +1,18 @@
+body {
+  height: 100vh;
+}
+
+nav {
+  height: 60px;
+}
+
 .map {
-  height: 80vh;
+  height: calc(100% - 65px);
   width: 100%;
 }
 
 .legend-wrapper {
+  box-sizing: border-box;
   position: fixed;
   bottom: 10px;
   left: 10px;

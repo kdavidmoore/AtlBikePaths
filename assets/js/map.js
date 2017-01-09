@@ -33,7 +33,9 @@ var icons = new ol.layer.Vector({
 
 // create the base tile from open street maps
 var osmTile = new ol.layer.Tile({
-  source: new ol.source.OSM()
+  source: new ol.source.Stamen({
+    layer: 'toner'
+  })
 });
 
 // create the bike paths tile from a new TileWMS source
