@@ -1,14 +1,16 @@
 body {
   height: 100vh;
+  margin: 0px;
 }
 
 nav {
-  height: 60px;
+  margin: 0px;
 }
 
 .map {
-  height: calc(100% - 65px);
+  height: calc(100% - 64px);
   width: 100%;
+  margin: 0px;
 }
 
 .legend-wrapper {
