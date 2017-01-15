@@ -60,7 +60,8 @@ $(document).ready(function() {
       return true;
     });
     
-    hit ? map.getTargetElement().style.cursor = 'pointer' :
-      map.getTargetElement().style.cursor = '';
+    hit
+    ? map.getTargetElement().style.cursor = 'pointer'
+    : map.getTargetElement().style.cursor = '';
   });
 });

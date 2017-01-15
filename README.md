@@ -3,7 +3,7 @@
 Displaying bike path conditions around Atlanta.
 
 ## Screenshot
-![GIF](http://i68.tinypic.com/2e55dnp.gif)
+![screenshot](http://i68.tinypic.com/23lzfab.png)
 
 ## [Demo here](http://ec2-54-210-135-224.compute-1.amazonaws.com/)
 
@@ -31,7 +31,7 @@ Clarence Blalock provided the original idea for this project, and also provided 
 ```
 
 ## Installation
-This app requires a [Geoserver](http://geoserver.org/) instance on the backend that serves the 'bikepaths' tile. See `geoserver_instructions.md` for instructions on setting up Geoserver.
+This app requires a [Geoserver](http://geoserver.org/) instance running to serve the 'bikepaths' tile. See `geoserver_instructions.md` for instructions on setting up Geoserver.
 
 Once you have Geoserver set up, place the URL to your Geoserver's [Web Map Service (WMS)](http://docs.geoserver.org/stable/en/user/services/wms/reference.html) in `assets/js/WMS_URL`:
 

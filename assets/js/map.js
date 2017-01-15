@@ -13,7 +13,7 @@ function iconFactory(obj) {
     image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
       src: 'assets/images/map-pin.svg',
       opacity: 0.8,
-      scale: 0.6
+      scale: 0.7
     }))
   }));
 
